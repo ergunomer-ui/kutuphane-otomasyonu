@@ -38,8 +38,8 @@ namespace KutuphaneOtomasyonu.UI
                 db.Kitaplar.Add(yeni); // Listeye ekle
                 db.SaveChanges();      // Veritabanını kaydet
 
-                VerileriYenile();      //Tabloyu güncelle
-                Temizle();             //Kutuları boşalt
+                VerileriYenile();      // Tabloyu güncelle
+                Temizle();             // Kutuları boşalt
                 MessageBox.Show("Kitap Kaydedildi");
             }
             catch (Exception ex)
