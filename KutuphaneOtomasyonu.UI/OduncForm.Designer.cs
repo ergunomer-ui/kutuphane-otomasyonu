@@ -35,37 +35,52 @@
             dgvOduncListesi = new DataGridView();
             btnIadeAl = new Button();
             btnOduncIptal = new Button();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            panel5 = new Panel();
+            panel4 = new Panel();
+            panel3 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvOduncListesi).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel5.SuspendLayout();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // cmbUyeler
             // 
+            cmbUyeler.Dock = DockStyle.Fill;
             cmbUyeler.FormattingEnabled = true;
-            cmbUyeler.Location = new Point(56, 37);
+            cmbUyeler.Location = new Point(0, 0);
             cmbUyeler.Name = "cmbUyeler";
-            cmbUyeler.Size = new Size(151, 28);
+            cmbUyeler.Size = new Size(192, 28);
             cmbUyeler.TabIndex = 0;
+            cmbUyeler.SelectedIndexChanged += cmbUyeler_SelectedIndexChanged;
             // 
             // cmbKitaplar
             // 
+            cmbKitaplar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             cmbKitaplar.FormattingEnabled = true;
-            cmbKitaplar.Location = new Point(56, 80);
+            cmbKitaplar.Location = new Point(0, 33);
             cmbKitaplar.Name = "cmbKitaplar";
-            cmbKitaplar.Size = new Size(151, 28);
+            cmbKitaplar.Size = new Size(192, 28);
             cmbKitaplar.TabIndex = 1;
             // 
             // dtpIade
             // 
-            dtpIade.Location = new Point(232, 35);
+            dtpIade.Dock = DockStyle.Top;
+            dtpIade.Location = new Point(0, 0);
             dtpIade.Name = "dtpIade";
-            dtpIade.Size = new Size(250, 27);
+            dtpIade.Size = new Size(301, 27);
             dtpIade.TabIndex = 2;
             // 
             // btnOduncVer
             // 
-            btnOduncVer.Location = new Point(232, 80);
+            btnOduncVer.Dock = DockStyle.Right;
+            btnOduncVer.Location = new Point(145, 0);
             btnOduncVer.Name = "btnOduncVer";
-            btnOduncVer.Size = new Size(94, 29);
+            btnOduncVer.Size = new Size(153, 54);
             btnOduncVer.TabIndex = 3;
             btnOduncVer.Text = "Ödünç Ver";
             btnOduncVer.UseVisualStyleBackColor = true;
@@ -73,18 +88,23 @@
             // 
             // dgvOduncListesi
             // 
+            dgvOduncListesi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvOduncListesi.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvOduncListesi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvOduncListesi.Location = new Point(56, 130);
+            dgvOduncListesi.Dock = DockStyle.Fill;
+            dgvOduncListesi.Location = new Point(0, 0);
             dgvOduncListesi.Name = "dgvOduncListesi";
             dgvOduncListesi.RowHeadersWidth = 51;
-            dgvOduncListesi.Size = new Size(300, 188);
+            dgvOduncListesi.Size = new Size(508, 269);
             dgvOduncListesi.TabIndex = 4;
+            dgvOduncListesi.CellContentClick += dgvOduncListesi_CellContentClick;
             // 
             // btnIadeAl
             // 
-            btnIadeAl.Location = new Point(332, 79);
+            btnIadeAl.Dock = DockStyle.Left;
+            btnIadeAl.Location = new Point(0, 0);
             btnIadeAl.Name = "btnIadeAl";
-            btnIadeAl.Size = new Size(115, 29);
+            btnIadeAl.Size = new Size(139, 54);
             btnIadeAl.TabIndex = 5;
             btnIadeAl.Text = "Kitabı İade Al";
             btnIadeAl.UseVisualStyleBackColor = true;
@@ -92,30 +112,79 @@
             // 
             // btnOduncIptal
             // 
-            btnOduncIptal.Location = new Point(453, 80);
+            btnOduncIptal.Dock = DockStyle.Bottom;
+            btnOduncIptal.Location = new Point(0, 90);
             btnOduncIptal.Name = "btnOduncIptal";
-            btnOduncIptal.Size = new Size(111, 29);
+            btnOduncIptal.Size = new Size(301, 29);
             btnOduncIptal.TabIndex = 6;
             btnOduncIptal.Text = "İşlemi İptal Et";
             btnOduncIptal.UseVisualStyleBackColor = true;
             btnOduncIptal.Click += btnOduncIptal_Click;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(dgvOduncListesi);
+            panel1.Location = new Point(56, 169);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(508, 269);
+            panel1.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(panel5);
+            panel2.Controls.Add(panel4);
+            panel2.Controls.Add(panel3);
+            panel2.Location = new Point(56, 41);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(505, 125);
+            panel2.TabIndex = 8;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(btnIadeAl);
+            panel5.Controls.Add(btnOduncVer);
+            panel5.Location = new Point(201, 36);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(298, 54);
+            panel5.TabIndex = 9;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(dtpIade);
+            panel4.Controls.Add(btnOduncIptal);
+            panel4.Location = new Point(201, 3);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(301, 119);
+            panel4.TabIndex = 9;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(cmbKitaplar);
+            panel3.Controls.Add(cmbUyeler);
+            panel3.Location = new Point(3, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(192, 119);
+            panel3.TabIndex = 7;
+            // 
             // OduncForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnOduncIptal);
-            Controls.Add(btnIadeAl);
-            Controls.Add(dgvOduncListesi);
-            Controls.Add(btnOduncVer);
-            Controls.Add(dtpIade);
-            Controls.Add(cmbKitaplar);
-            Controls.Add(cmbUyeler);
+            AutoSize = true;
+            ClientSize = new Size(622, 478);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "OduncForm";
             Text = "OduncForm";
             Load += OduncForm_Load_1;
             ((System.ComponentModel.ISupportInitialize)dgvOduncListesi).EndInit();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -128,5 +197,10 @@
         private DataGridView dgvOduncListesi;
         private Button btnIadeAl;
         private Button btnOduncIptal;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel4;
+        private Panel panel3;
+        private Panel panel5;
     }
 }

@@ -53,13 +53,26 @@ namespace KutuphaneOtomasyonu.UI
         {
             if (dgvKitaplar.SelectedRows.Count > 0)
             {
-                //Seçili kitabı bul
-                Kitap secili = (Kitap)dgvKitaplar.SelectedRows[0].DataBoundItem;
+                //Seçili satırdaki Kitap ID'sini al
+                int seciliKitapId = Convert.ToInt32(dgvKitaplar.SelectedRows[0].Cells["Id"].Value);
 
-                db.Kitaplar.Remove(secili); //Veritabanından silme listesine al
-                db.SaveChanges();           //Silmeyi Onayla
+                //Veritabanında bul
+                var silinecekKitap = db.Kitaplar.FirstOrDefault(x => x.Id == seciliKitapId);
 
-                VerileriYenile();           //Tabloyu güncelle
+                if (silinecekKitap != null)
+                {
+                    //Sil ve kaydet
+                    db.Kitaplar.Remove(silinecekKitap);
+                    db.SaveChanges();
+
+                    VerileriYenile();
+                    Temizle();
+                    MessageBox.Show("Kitap başarıyla silindi.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen silmek için bir satır seçin!");
             }
         }
 
@@ -75,7 +88,7 @@ namespace KutuphaneOtomasyonu.UI
                     k.KitapAdi,
                     k.Yazar,
                     k.SayfaSayisi,
-                    // IsBorrowed true ise çarpı, false ise onay işareti basıyoruz
+                    // IsBorrowed true ise çarpı, false ise onay işareti
                     Durum = k.IsBorrowed ? "❌ Ödünç Verildi" : "✅ Rafta"
                 }).ToList();
 
@@ -100,7 +113,8 @@ namespace KutuphaneOtomasyonu.UI
             var sonuc = db.Kitaplar
                 .Where(k => k.KitapAdi.ToLower().Contains(arananMetin) ||
                             k.Yazar.ToLower().Contains(arananMetin))
-                .Select(k => new {
+                .Select(k => new
+                {
                     k.Id,
                     k.KitapAdi,
                     k.Yazar,
@@ -135,6 +149,16 @@ namespace KutuphaneOtomasyonu.UI
             OduncForm frm = new OduncForm();
             frm.ShowDialog(); // Form kapanana kadar bekler
             VerileriYenile(); // Kapanınca listeyi hemen günceller
+        }
+
+        private void pbKapak_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -148,5 +148,15 @@ namespace KutuphaneOtomasyonu.UI
         {
 
         }
+
+        private void dgvOduncListesi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cmbUyeler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

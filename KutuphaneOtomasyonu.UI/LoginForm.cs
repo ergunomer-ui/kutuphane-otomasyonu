@@ -53,5 +53,15 @@ namespace KutuphaneOtomasyonu.UI
         {
 
         }
+
+        private void txtSifre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

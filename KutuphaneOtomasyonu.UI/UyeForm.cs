@@ -40,7 +40,7 @@ namespace KutuphaneOtomasyonu.UI
                 db.Uyeler.Add(yeniUye);
                 db.SaveChanges();
                 UyeleriListele();
-                MessageBox.Show("Üye başarıyla kaydedildi knk!");
+                MessageBox.Show("Üye başarıyla kaydedildi");
                 FormuTemizle();
             }
             catch (Exception ex) { MessageBox.Show("Hata: " + ex.Message); }
@@ -62,6 +62,11 @@ namespace KutuphaneOtomasyonu.UI
         private void FormuTemizle()
         {
             txtAd.Clear(); txtSoyad.Clear(); txtTelefon.Clear(); txtEposta.Clear();
+        }
+
+        private void dgvUyeler_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
